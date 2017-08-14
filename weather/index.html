@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>FCC Local Weather</title>
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<div class="container-fluid container-table pad-top">
+			<div class="row vertical-center-row">
+				<h1 class="text-center">
+					<i class="fa fa-free-code-camp" aria-hidden="true"></i>
+					&nbsp;
+					FCC Local Weather
+					&nbsp;
+					<i class="fa fa-free-code-camp" aria-hidden="true"></i>
+				</h1>
+			</div>
+			<div class="row vertical-center-row pad-top">
+			</div>
+			<div>
+				<h3 id="locality"></h3>
+			</div>
+			<div class="row vertical-center-row pad-top">
+			<div id="temperature">
+				<h2>
+					<i id="hot" class="fa fa-thermometer-full hidden" aria-hidden="true"></i>
+					<i id="warm" class="fa fa-thermometer-three-quarters hidden" aria-hidden="true"></i>
+					<i id="cool" class="fa fa-thermometer-half hidden" aria-hidden="true"></i>
+					<i id="cold" class="fa fa-thermometer-quarter hidden" aria-hidden="true"></i>
+					<i id="freezing" class="fa fa-thermometer-empty hidden" aria-hidden="true"></i>
+					<span id="number"></span>
+					<a id="metric" href=''></a>
+				</h2>
+			</div>
+			<div id="sky">
+				<i id="sun" class="fa fa-sun-o hidden" aria-hidden="true"></i>
+				<i id="cloud" class="fa fa-cloud hidden" aria-hidden="true"></i>
+				<i id="rain" class="fa fa-umbrella hidden" aria-hidden="true"></i>
+				<span id="storm" class="hidden">
+					<i  class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+					<i class="fa fa-umbrella" aria-hidden="true"></i>
+				</span>
+				<i id="snow" class="fa fa-snowflake-o hidden" aria-hidden="true"></i>
+			</div>
+      </div>
+    </div>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/script.js"></script>
+	</body>
+</html>
