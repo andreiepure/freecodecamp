@@ -1,0 +1,22 @@
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+.smaller-image {
+  width: 150px;
+}
+
+html, body, .container-table {
+   height: 100%;
+    font:inherit;
+    font-family: sans-serif;
+    font-weight: 400;
+}
+.container-table {
+   display: table;
+}
+.vertical-center-row {
+   display: table-cell;
+   vertical-align: middle;
+}
