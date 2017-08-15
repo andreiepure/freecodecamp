@@ -21,35 +21,42 @@
 					<i class="fa fa-free-code-camp" aria-hidden="true"></i>
 				</h1>
 			</div>
-			<div class="row vertical-center-row pad-top">
-			</div>
-			<div>
+			<div class="row vertical-center-row pad-top"> </div>
+			<div class="text-center">
 				<h3 id="locality"></h3>
 			</div>
-			<div class="row vertical-center-row pad-top">
-			<div id="temperature">
-				<h2>
-					<i id="hot" class="fa fa-thermometer-full hidden" aria-hidden="true"></i>
-					<i id="warm" class="fa fa-thermometer-three-quarters hidden" aria-hidden="true"></i>
-					<i id="cool" class="fa fa-thermometer-half hidden" aria-hidden="true"></i>
-					<i id="cold" class="fa fa-thermometer-quarter hidden" aria-hidden="true"></i>
-					<i id="freezing" class="fa fa-thermometer-empty hidden" aria-hidden="true"></i>
-					<span id="number"></span>
-					<a id="metric" href=''></a>
-				</h2>
-			</div>
-			<div id="sky">
-				<i id="sun" class="fa fa-sun-o hidden" aria-hidden="true"></i>
-				<i id="cloud" class="fa fa-cloud hidden" aria-hidden="true"></i>
-				<i id="rain" class="fa fa-umbrella hidden" aria-hidden="true"></i>
-				<span id="storm" class="hidden">
-					<i  class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-					<i class="fa fa-umbrella" aria-hidden="true"></i>
-				</span>
-				<i id="snow" class="fa fa-snowflake-o hidden" aria-hidden="true"></i>
-			</div>
-      </div>
-    </div>
+			<div class="row vertical-center-row">
+				<div id="sky" class="text-center">
+					<h1>
+						<span id="sun" class="hidden"><i class="fa fa-sun-o" aria-hidden="true"></i></span>
+						<span id="cloud" class="hidden"><i class="fa fa-cloud" aria-hidden="true"></i></span>
+						<span id="rain" class="hidden"><i class="fa fa-umbrella" aria-hidden="true"></i></span>
+						<span id="storm" class="hidden">
+							<i  class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+							<i class="fa fa-umbrella" aria-hidden="true"></i>
+						</span>
+						<span id="snow" class="hidden"><i class="fa fa-snowflake-o" aria-hidden="true"></i></span>
+					</h1>
+					<h3>
+						<span id="detailed-sky"></span>
+					</h3>
+				</div>
+				<div id="temperature" class="text-center">
+					<h2>
+						<span id="hot" class="hidden"><i class="fa fa-thermometer-full" aria-hidden="true"></i></span>
+						<span id="warm" class="hidden"><i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i></span>
+						<span id="cool" class="hidden"><i class="fa fa-thermometer-half" aria-hidden="true"></i></span>
+						<span id="cold" class="hidden"><i class="fa fa-thermometer-quarter" aria-hidden="true"></i></span>
+						<span id="freezing" class="hidden"><i class="fa fa-thermometer-empty" aria-hidden="true"></i></span>
+						<span id="number"></span>
+						<button class="btn btn-primary hidden" id="metric"></button>
+					</h2>
+				</div>
+				<div id="error" class="text-center hidden">
+					<span class="label label-danger">The browser does not support geolocalisation, cannot show weather</span>
+				</div>
+		  </div>
+		</div>
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/script.js"></script>
 	</body>

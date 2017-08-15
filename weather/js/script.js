@@ -2,7 +2,11 @@ $(document).ready(function() {
 	
 	var css = new function() {
 		this.HIDDEN = 'hidden';
-		this.ACTIVE = 'active';
+	}();
+
+	var metricType = new function() {
+		this.Celsius = '&deg;C';
+		this.Fahrenheit = 'F';
 	}();
 
     var temperatureIcons = new function() {
@@ -20,6 +24,9 @@ $(document).ready(function() {
         this.storm = document.getElementById('storm');
         this.snow = document.getElementById('snow');
     }();
+
+	var metricButton = document.getElementById('metric');
+	var metricNumber = document.getElementById('number');
 
 	// show and hide for an HTML element
 	var showElement = function(element) {
@@ -47,12 +54,6 @@ $(document).ready(function() {
 		}
 	};
 
-    case 'drizzle':
-	case 'rain':
-	case 'clouds':
-	case 'snow':
-	case 'thunderstom':
-
 	function chooseTemperatureIcon(number) {
 		hideElements(temperatureIcons);
 
@@ -75,30 +76,60 @@ $(document).ready(function() {
 
 	function chooseSkyIcon(status) {
 		hideElements(skyIcons);
+
+		var lowStatus = status.toLowerCase();
+
+		switch (lowStatus) {
+		case 'clear': showElement(skyIcons.sun); break;
+		case 'drizzle': showElement(skyIcons.rain); break;
+		case 'rain': showElement(skyIcons.rain); break;
+		case 'clouds': showElement(skyIcons.cloud); break;
+		case 'snow': showElement(skyIcons.snow); break;
+		case 'thunderstom': showElement(skyIcons.storm); break;
+		}
 	}
 
+	function twoDecimal(input) {
+		return parseFloat(input).toFixed(2);
+	}
+
+	function changeMetric() {
+		var temperature = metricNumber.innerText;
+		// weird things happen if I try to compare with the Celsius, because of encoded/decoded symbol
+		if (metric.innerHTML === metricType.Fahrenheit) {
+			metricButton.innerHTML = metricType.Celsius;
+			metricNumber.innerText = twoDecimal((temperature - 32) * 5 / 9);
+		}
+		else {
+			metricButton.innerHTML = metricType.Fahrenheit;
+			metricNumber.innerText = twoDecimal((temperature * 9)/5 + 32);
+		}
+	}
 
 	function setUi(response) {
-		var locality = response.name + ", " + response.sys.country; 
+		var locality = response.name + ', ' + response.sys.country; 
 
-		var metric = "C";
 		var temperature = response.main.temp;
 		var minTemp = response.main.temp_min;
 		var maxTemp = response.main.temp_max;
 
-		var sky = weather[0].main;
-		var skyVerbose = weather[0].main.description;
+		var sky = response.weather[0].main;
+		var skyVerbose = response.weather[0].description;
 
         document.getElementById('locality').innerText = locality;
-
-        document.getElementById('number').innerText = temperature;
-        document.getElementById('metric').innerText = metric;
+        document.getElementById('detailed-sky').innerText = skyVerbose;
 
 		chooseTemperatureIcon(temperature);
 		chooseSkyIcon(sky);
+
+        metricNumber.innerText = twoDecimal(temperature);
+        metricButton.innerHTML = metricType.Celsius;
+		metricButton.addEventListener('click', changeMetric);
+
+		showElement(metricButton);
 	}
 
-	if ("geolocation" in navigator) {
+	if ('geolocation' in navigator) {
 
 		navigator.geolocation.getCurrentPosition(function(position) {
 			var latitude = position.coords.latitude;
@@ -108,15 +139,15 @@ $(document).ready(function() {
 			var xmlHttp = new XMLHttpRequest();
 			xmlHttp.onreadystatechange = function() {
 				if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-					setUi(xmlHttp.response);
+					setUi(JSON.parse(xmlHttp.response));
 				}
 			};
-			xmlHttp.open("GET", theUrl, true);
+			xmlHttp.open('GET', url, true);
 			xmlHttp.send(null);
-		}
+		});
 	}
 	else {
-		
+		showElement(document.getElementById('error'));	
 	}
 
 });
